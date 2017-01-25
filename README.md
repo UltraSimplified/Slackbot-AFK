@@ -15,7 +15,8 @@ This script utilizes a MySQL database schema that can easily be set to it's init
 
 The next step is to set up each of the slash command integrations (there's one for `/afk` and one for `/whereis`): 
 
-![afk](afk.jpg "AFK")
+![afk](afk.png "AFK")
+
 1. Open [https://[TEAM-NAME].slack.com/apps/build/custom-integration](https://[TEAM-NAME].slack.com/apps/build/custom-integration)
 2. Select "Slash Commands" 
 3. Enter `/afk` as the command to create
@@ -25,7 +26,8 @@ The next step is to set up each of the slash command integrations (there's one f
 
 Next, create the slash command for the `/whereis` command: 
 
-![whereis](whereis.jpg "WhereIs")
+![whereis](whereis.png "WhereIs")
+
 1. Open [https://[TEAM-NAME].slack.com/apps/build/custom-integration](https://[TEAM-NAME].slack.com/apps/build/custom-integration)
 2. Select "Slash Commands" 
 3. Enter `/whereis` as the command to create
