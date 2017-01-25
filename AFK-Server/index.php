@@ -30,7 +30,8 @@ $app->post(
 $app->post(
 	'/afk', 
 	 function () use ($app) {
-		 
+		
+	global $afkToken;
 	$auth = $_POST['token'];
 
 	if ($auth != $afkToken) {
@@ -106,7 +107,8 @@ $app->post(
 $app->post(
 	'/whereis', 
 	 function () use ($app) {
-		 
+
+	global $whereisToken;
 	$auth = $_POST['token'];
 
 	if ($auth != $whereisToken) {
