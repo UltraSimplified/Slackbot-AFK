@@ -30,11 +30,10 @@ $app->post(
 $app->post(
 	'/afk', 
 	 function () use ($app) {
-		
-	global $afkToken;
+     global $afkToken;
 	$auth = $_POST['token'];
 
-	if ($auth != $afkToken) {
+	if ($auth !== $afkToken) {
 		echo "Not authorized";
 		return;
 	}
@@ -93,7 +92,7 @@ $app->post(
 		} else {
 			$app->response->setStatus(201);	    
 			DB::update('Users', array('userName' => $userName, 'awayMessage' => $text), "userID=%s", $userID);
-			echo $userName . ' is now away with message "' . $text . '"';
+			echo $userName . ' is ' . $text . '';
 			
 			foreach($users as $user){
 				if ($user['userToken'] != "") {
@@ -107,8 +106,8 @@ $app->post(
 $app->post(
 	'/whereis', 
 	 function () use ($app) {
-
-	global $whereisToken;
+		 
+    global $whereisToken;
 	$auth = $_POST['token'];
 
 	if ($auth != $whereisToken) {
@@ -128,7 +127,7 @@ $app->post(
 	if (count($users) == 0) {
 		//add user
 		$app->response->setStatus(201);
-		echo 'User ' . $text . ' is not using the AFK slash command to update their status';
+		echo 'User ' . $text . ' is not using AFK to update their status';
 	} else {
 		//update user
 		$app->response->setStatus(201);
@@ -136,9 +135,9 @@ $app->post(
 		foreach($users as $user){
 
 			if ($user['awayMessage'] == "") {
-				echo $user['userName'] . ' is currently online and available to chat.';
+				echo $user['userName'] . ' is available to chat.';
 			} else {
-				echo $user['userName'] . ' is currently away with status: "' . $user['awayMessage'] . '" as of ' .$user['awayDate'] . ' Pacific Time';
+				echo $user['userName'] . ' is ' . $user['awayMessage'] . ' (since ' . date( 'H:m', strtotime( $user['awayDate'] ) ) . ')';
 			}
 			
 		}
@@ -146,9 +145,6 @@ $app->post(
 });
 
 $app->run();
-?>
-
-<?
 
 function setUserAway($userToken) 
 {
@@ -253,6 +249,3 @@ function curl_exec_follow($ch, &$maxredirect = null)
   }
   return curl_exec($ch);
 }
-
-	
-?>
